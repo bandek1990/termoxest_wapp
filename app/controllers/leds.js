@@ -4,13 +4,13 @@ module.exports = function(app) {
 
   Cylon.robot({
 
-    connection: { name: 'raspi', adaptor: 'raspi' },
+    connections: { raspi: { adaptor: 'raspi' }},
 
-    devices: [
-      { name: 'red', driver: 'led', pin: 15 },
-      { name: 'yellow', driver: 'led', pin: 11 },
-      { name: 'green', driver: 'led', pin: 7 }
-    ],
+    devices: {
+      red: { driver: 'led', pin: 15 },
+      yellow: { driver: 'led', pin: 11 },
+      green: { driver: 'led', pin: 7 }
+    },
 
     work: function (my) {
       app.route('/api/:led/:position').get(function(req, res, next) {
